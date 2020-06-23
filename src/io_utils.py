@@ -18,13 +18,13 @@ def load_amazon_msda(filename, train=True, suffix=""):
         partition = "train"
     else:
         partition = "test"
-    return (np.load("./data/preprocessing/{}_msda{}_{}.npy".format(filename, suffix, partition)), 
+    return (np.load("./data/preprocessing/{}_msda_{}_{}.npy".format(filename, suffix, partition)), 
             np.load("./data/preprocessing/{}_label_{}.npy".format(filename, partition)))
 
 def save_model(model, filename):
     with open(filename, "wb") as f:
         pickle.dump(model, f)
-    print("Modle Saved")
+    print("Model Saved")
 
 def load_model(filename):
     with open(filename, "rb") as f:

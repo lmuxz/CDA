@@ -11,8 +11,6 @@ from torch.utils import data
 class FC_embedding(nn.Module):
     def __init__(self, embedding_dict=[], embedding_file=None):
         super().__init__()
-        #embedding_num = [704, 134, 702, 704, 11, 220, 3, 219]
-        #embedding_dim = [5, 3, 5, 5, 2, 4, 1, 4]
         embedding_num = [3, 131, 4, 483, 103, 5, 106, 4]
         embedding_dim = [1, 3, 1, 4, 3, 1, 3, 1]
 
