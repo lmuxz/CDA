@@ -46,6 +46,27 @@ def performance(pred, label, auc=True, first_n=None):
         return label.sum()
 
 
+def best_prediction(model, data, data_tsf, feature_list, best_index, repeat=1):
+    """
+    Inputs:
+        model: prediction model, should have predict_prob function
+        data: always the same size as data_tsf
+        data_tsf: 
+        feature_list:
+        best_index: when to stop, include
+        repeat: Default 1
+    Returns:
+        Best prediction
+    """
+    data = data.copy()
+    for f in feature_list[:best_index+1]:
+        for ff in f:
+            data[:, ff] = data_tsf[:, ff]
+    pred = model.predict_prob(data)
+    pred = pred.reshape(repeat, -1).mean(axis=0)
+    return pred
+
+
 def bootstrap(pred, label, n_sample, index_list=None):
     """
     Inputs:
